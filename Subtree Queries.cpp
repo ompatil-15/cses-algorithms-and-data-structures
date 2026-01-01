@@ -20,7 +20,7 @@ struct Fenwick {
 
   Fenwick(ll n) : n(n), bit(n + 1, 0) {}
 
-  ll sum(ll i) {
+  ll query_sum(ll i) {
     ll s = 0;
     while (i > 0) {
       s += bit[i];
@@ -36,7 +36,7 @@ struct Fenwick {
     }
   }
 
-  ll range_sum(ll l, ll r) { return sum(r) - sum(l - 1); }
+  ll range_query_sum(ll l, ll r) { return query_sum(r) - query_sum(l - 1); }
 };
 
 void dfs(ll u, ll p) {
@@ -102,15 +102,15 @@ int main() {
     } else {
       int u;
       cin >> u;
-      cout << fw.range_sum(tin[u], tout[u]) << "\n";
+      cout << fw.range_query_sum(tin[u], tout[u]) << "\n";
     }
   }
 
-//   print_arr(flat);
-//   print_arr(fw.bit);
-//   print_arr(value);
-//   print_arr(tin);
-//   print_arr(tout);
+  //   print_arr(flat);
+  //   print_arr(fw.bit);
+  //   print_arr(value);
+  //   print_arr(tin);
+  //   print_arr(tout);
 
   return 0;
 }
